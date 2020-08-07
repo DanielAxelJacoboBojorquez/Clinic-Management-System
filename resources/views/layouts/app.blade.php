@@ -9,10 +9,14 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Clinic Management System</title>
+    {{-- DataTable --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
+    <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="dist/js/adminlte.js"></script>
 
     <!-- Font Awesome Icons -->
@@ -26,7 +30,6 @@
     <link href="{{ asset('dist/css/adminlte.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-
 <body class="hold-transition sidebar-mini layout-fixed">
     <div id="app">
         <div class="wrapper">
@@ -203,16 +206,16 @@
                                 <ul class="nav nav-treeview">
                                     {{-- Employee --}}
                                     <li class="nav-item">
-                                        <a href="notas/todas"
-                                            class="{{ Request::path() === 'notas/todas' ? 'nav-link active' : 'nav-link' }}">
+                                        <a href="/employees"
+                                            class="{{ Request::path() === '/employees' ? 'nav-link active' : 'nav-link' }}">
                                             <i class="far fa-user nav-icon ml-4"></i>
                                             <p><b>Employee</b></p>
                                         </a>
                                     </li>
                                     {{-- Doctor --}}
                                     <li class="nav-item">
-                                        <a href="notas/favoritas"
-                                            class="{{ Request::path() === 'notas/favoritas' ? 'nav-link active' : 'nav-link' }}">
+                                        <a href="/doctors"
+                                            class="{{ Request::path() === '/doctors' ? 'nav-link active' : 'nav-link' }}">
                                             <i class="fas fa-user-md nav-icon ml-4"></i>
                                             <p><b>Doctor</b></p>
                                         </a>
@@ -264,8 +267,8 @@
                                 <ul class="nav nav-treeview">
                                     {{-- Patient List --}}
                                     <li class="nav-item">
-                                        <a href="notas/todas"
-                                            class="{{ Request::path() === 'notas/todas' ? 'nav-link active' : 'nav-link' }}">
+                                        <a href="/patients"
+                                            class="{{ Request::path() === '/patients' ? 'nav-link active' : 'nav-link' }}">
                                             <i class="fas fa-th-list nav-icon ml-4"></i>
                                             <p><b>Patient List</b></p>
                                         </a>
@@ -711,7 +714,7 @@
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <div class="content-header">
-
+                    @yield('header')
                 </div>
                 <!-- /.content-header -->
 
@@ -733,6 +736,10 @@
             <!-- /.control-sidebar -->
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js" defer></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+    @yield('js')
 </body>
-
 </html>
